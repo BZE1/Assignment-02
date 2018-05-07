@@ -20,23 +20,17 @@ Example  [enter 10]  1 2 3 4 5 6 7 8 9 10
 
 function printInt(n) 
 	{
-	// alert('in printInt')
-	document.write("<br>in printInt<br>");
-	document.write("<br> n =" + n + '<br>');
 	var answer = 0;
 		for(i =1;i <= n; i++)
 				{
-				// alert('in for statement');
-				document.write("<br> i = " + i + "...and...");
 				var answer = +i;
-				document.write(" answer = " + answer + "<br>");
-				// document.getElementById(Question_01).innerHTML = answer
+				 console.log(" answer = " + answer  );
 				}
 	}
 
 
 
-printInt(0)
+printInt(42);
 
 /*
 #########################################################################
@@ -100,20 +94,19 @@ Write the function [checkInput(x)]
 
 
 
+
 function checkInput(x) 
 	{
 			if (typeof x === "number" || typeof x ===  "string"|| typeof x ===  "boolean") {
-				document.write(typeof x);
-				console.log(typeof x);
+				return (typeof x);
 			}
 			else{
-				
-				document.write("-1");
-				consol.log('-1');
+				var result = '-1';
+				return result
 			}
 	}
 
-checkInput(34.32)
+console.log(checkInput(true));
 
 
 
@@ -149,13 +142,13 @@ function simpleEvenAdding(num)
 				even_num = i+2 ;
 				answer = i + answer;
 			}
-				document.write('Answer  = ' + answer);
-				console.log('Answer  = ' + answer);
+		return answer;
 	}
 
 
 // simpleEvenAdding(num)
-simpleEvenAdding(10)
+console.log(simpleEvenAdding(10));
+
 
 
 
@@ -235,25 +228,20 @@ function simpleReverse(str)
 			// varables
 			var str_loop = 0;
 			var str_count = str.length;
-
-			document.write("<br> Origintial String = " + str);
-			document.write("<br>" );
-			document.write("<br> New String = ");
-			
-						// THIS SPLITS EVERYTHING AnD COMMA DELIMITED
-			var str_split = str.split("");     
-  			var str_split_array = new Array(str_split)
+			var result_arr = [];
+			var result = "";
 
 				 for ( var m = str_count -1; m >=0 ; m = m -1)  // m = 
 					{  
-								document.write(str[m]); 
-								console.log(str[m]);
+								result_arr.push(str[m]);
  					} 
 
+ 			var result = result_arr.join("");
+ 			return result;
 	}
 
 
-simpleReverse(' its time for MSIMBO');
+console.log(simpleReverse(' its time for MSIMBO'));
 
 
 /*
@@ -283,36 +271,23 @@ simpleReverse(' its time for MSIMBO');
 				
 ######################################################################### */
 
-var arr_math = 0;
-var arr_counter = 0;
-var arr_max = 0;
-var m_max = 0;
-var m_min = 0;
-var m_diff = 0;
 
 function findDiff(arr) 
 	{
-		document.write("<br>" );
-		document.write('Entered Array = [Below]' + '<br>' + arr);
-		
+		var m_max = 0;
+		var m_min = 0;
+		var m_diff = 0;
+
 		var m_max = Math.max.apply(null, arr);
 		var m_min = Math.min.apply(null, arr);
-
-		document.write("<br>" );
-		document.write('Max Array # =  ' + m_max);
-
-		document.write("<br>" );
-		document.write('Min Array # =  ' + m_min);
-
 		var m_diff = m_max - m_min;
-		document.write("<br>" );
-		document.write('Difference Between =  ' + m_diff);
+
+		return m_diff
 		//_________________________________________________
 
 	}
 
-findDiff([23,114,345,23,445,677,654,42,55,11])
-
+console.log(findDiff([25,27]));
 
 
 /*
@@ -344,13 +319,13 @@ findDiff([23,114,345,23,445,677,654,42,55,11])
 					
 					var result_l = parseInt(num / 60);
 					var result_r = num % 60;
-					var result = result_l + " : " + result_r
+					var result = result_l + " : " + result_r;
 					return result;
 				}
 
 
-document.write(timeConvert(150));
 
+console.log(timeConvert(63));
 
 
 /*
@@ -376,89 +351,46 @@ document.write(timeConvert(150));
 ######################################################################### */
 
 
-
 function findStr(str, long) 
 	{
-
 		var tgt = str.toLowerCase();
 		var found = 0;
-	
 		var str = "";
-	
-
 		var crap = long.toLowerCase();
-			
 		var crap_found = 0;
 		var counter = 0
-		
-	
 
-	if (long.includes(str))
+			if (long.includes(str))
 
-			{
-
-	
-
-				for(var i = 0 ; i <= crap.length ; i++)
 					{
+						for(var i = 0 ; i <= crap.length ; i++)
+							{
+								get_crap = crap.indexOf(tgt) ;
 
-						get_crap = crap.indexOf(tgt) ;
-
-							if (long.includes(str))
-								{
-									
-									var counter = counter+1		
-
-									
-										var crap = crap.slice(get_crap +1);
-										
-
-										i = get_crap -i;
-										
-
-								}
-							else{
-								return
+									if (long.includes(str))
+										{
+											var counter = counter+1		
+											var crap = crap.slice(get_crap +1);
+											i = get_crap -i;
+										}
+									else{
+										return
+									}
 							}
-
-							
-
-					
-
-
 					}
-			}
 		else{
 			return;
 		}
 
-
-
 	document.write("<br>  Counter  = " + counter);
-
-				// document.write("<br>" );
-				// var res = long.match(str);
-				// // var res = long.match(/ain/gi);
-				// document.write(" match :" + long.search(tgt));
-
-				// document.write("<br>" );
-				// document.write(" search :" + long.search(str));
-
-				// document.write("<br>" );
-				// document.write(" includes :" + long.includes(str)) ;  // boolean true/false
-				// 													//  use as Conditional test
-
-				// document.write("<br>" );
-				// document.write(" match :" + long.match(str)) ;  // retruns  cpr
-
+	console.log("<br>  Counter  = " + counter);
 
 	}
 
 
 // findStr("str", "long");
-findStr("ok", "ok here we go ok get er ok done ok");  // 2 copies
+findStr("ok", "ok here we go ok get er ok done ok"); 
 // findStr("", "");
-
 
 
 
@@ -500,12 +432,15 @@ findStr("ok", "ok here we go ok get er ok done ok");  // 2 copies
       // ================================================
       // 			SUB FUNCTION TO DO THE MATH
       // ================================================
-function selfDiv(t_arr)
+
+
+ function selfDiv(t_arr)
       {
 
         var parc_arr  = t_arr.toString();
         var arr_str = parc_arr.split("");
         var div_Numbers = [];
+        
         
         		// LOOPS THROUGH EACH DIGET
              for (var m = 0 ; m < arr_str.length ; m++)
@@ -527,8 +462,11 @@ function selfDiv(t_arr)
                         }
 
         div_Numbers.push(t_arr);
-        document.write('<br>' +div_Numbers  );
-        console.log(div_Numbers );
+        
+	       // 		document.write('<br>' +div_Numbers  );
+	     		// console.log(div_Numbers );
+        
+        return parc_flag;
 
       }
 
@@ -540,6 +478,7 @@ function selfDividingNumbers(left, right)
            	var div_rtn = [];
             var i_arr = [];
             var i_arr_s = [];
+            var rtn_arr = [];
 
             document.write('Numbers entered are    LEFT:' + left + '  RIGHT:' + right);
             document.write('<br>');
@@ -552,14 +491,21 @@ function selfDividingNumbers(left, right)
                            {
                                var i_arr = i;  
                                // CALL THE SUB FUNCTION
-                               selfDiv(i_arr);
+                               if(selfDiv(i_arr)){
+                               	rtn_arr.push(i_arr);
+                               }
+                               // rtn_arr.push(div_Numbers);
+                               // debug(rtn_arr);
+
                            }
 
+                return rtn_arr
            }
 
 
 // selfDividingNumbers( left, right);
-selfDividingNumbers( 100, 200);
+console.log(selfDividingNumbers( 10,100));
+// selfDividingNumbers( 10, 20);
 
 
 /*
